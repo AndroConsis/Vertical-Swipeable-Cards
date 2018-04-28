@@ -1,0 +1,26 @@
+{
+  "name": "VerticalGestureScroll",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "babel-loader": "^8.0.0-beta.2",
+    "babel-preset-react-native": "2.1.0",
+    "react": "16.3.1",
+    "react-native": "0.55.3",
+    "webpack": "^4.6.0"
+  },
+  "devDependencies": {
+    "babel-jest": "22.4.3",
+    "jest": "22.4.3",
+    "react-test-renderer": "16.3.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
