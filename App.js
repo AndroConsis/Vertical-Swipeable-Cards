@@ -22,7 +22,7 @@ import SwipeableCard from "./SwipeableCard";
 
 export default class App extends Component {
   state = {
-    data: [1, 2]
+    data: [1]
   };
 
   getRandomColor = () => {

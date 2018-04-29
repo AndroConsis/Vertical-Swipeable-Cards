@@ -20,7 +20,7 @@ export default class SwipeableCard extends Component {
     onPanResponderMove: Animated.event([
       null,
       {
-        dy: this.translateY
+        dy: this.translateY,
       }
     ]),
 
@@ -33,6 +33,10 @@ export default class SwipeableCard extends Component {
           toValue: dy > 0 ? screenHeight : -screenHeight,
           duration: 200
         }).start(this.props.onDismiss);
+        Animated.timing(this.scale,  {
+          toValue: 1, 
+          duration: 200
+        }).start();
       } else {
         Animated.spring(this.translateY, {
           toValue: 0,
@@ -44,15 +48,40 @@ export default class SwipeableCard extends Component {
 
   render() {
     return (
-      <Animated.View
-        style={[
-          {
-            transform: [{ translateY: this.translateY }, { scale: this.scale }]
-          },
-          styles.animatedCardStyle
-        ]}
-        {...this._panResponder.panHandlers}
-      >
+      <View style={{ flex: 1, ...StyleSheet.absoluteFillObject }}>
+        <Animated.View
+          style={[
+            {
+              transform: [{ translateY: this.translateY }]
+            },
+            styles.animatedCardStyle
+          ]}
+          {...this._panResponder.panHandlers}
+        >
+          <Card />
+        </Animated.View>
+        <Animated.View
+          style={[
+            {
+              transform: [
+                { scale: this.scale }
+              ]
+            },
+            styles.animatedCardStyle
+          ]}
+          {...this._panResponder.panHandlers}
+        >
+          <Card />
+        </Animated.View>
+      </View>
+    );
+  }
+}
+
+class Card extends Component {
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
         <View style={{ flex: 4, backgroundColor: "lightgray" }}>
           <Image
             style={{ flex: 1, height: undefined, width: undefined }}
@@ -79,7 +108,7 @@ export default class SwipeableCard extends Component {
             assentior ei eum, vix prima instructior an. Eam quas justo commune
           </Text>
         </View>
-      </Animated.View>
+      </View>
     );
   }
 }
